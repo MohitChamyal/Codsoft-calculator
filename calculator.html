@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+<link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+<div class="calculator">
+  <input type="text" class="display" id="result" disabled>
+  <button class="button" onclick="appendToResult('7')">7</button>
+  <button class="button" onclick="appendToResult('8')">8</button>
+  <button class="button" onclick="appendToResult('9')">9</button>
+  <button class="button operator" onclick="appendToResult('+')">+</button>
+  <button class="button" onclick="appendToResult('4')">4</button>
+  <button class="button" onclick="appendToResult('5')">5</button>
+  <button class="button" onclick="appendToResult('6')">6</button>
+  <button class="button operator" onclick="appendToResult('-')">-</button>
+  <button class="button" onclick="appendToResult('1')">1</button>
+  <button class="button" onclick="appendToResult('2')">2</button>
+  <button class="button" onclick="appendToResult('3')">3</button>
+  <button class="button operator" onclick="appendToResult('*')">*</button>
+  <button class="button" onclick="appendToResult('0')">0</button>
+  <button class="button" onclick="calculate()">=</button>
+  <button class="button c" onclick="clearResult()">C</button>
+  <button class="button ac" onclick="clearAll()">AC</button>
+  <button class="button operator" onclick="appendToResult('/')">/</button>
+</div>
+
+<script>
+  const resultElement = document.getElementById("result");
+
+  function appendToResult(value) {
+    resultElement.value += value;
+  }
+
+  function calculate() {
+    try {
+      resultElement.value = eval(resultElement.value);
+    } catch (error) {
+      resultElement.value = "Error";
+    }
+  }
+
+  function clearResult() {
+    resultElement.value = resultElement.value.slice(0, -1);
+  }
+
+  function clearAll() {
+    resultElement.value = "";
+  }
+</script>
+</body>
+</html>
